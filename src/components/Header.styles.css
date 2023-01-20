@@ -1,0 +1,87 @@
+header {
+  padding: 0.25rem 1rem;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+h4 {
+  cursor: pointer;
+}
+
+.navbar-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar-mobile {
+  display: none;
+  position: relative;
+}
+
+.navbar-mobile svg {
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.navbar-container li {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+  .navbar-container {
+    display: none;
+  }
+
+  .navbar-mobile {
+    display: flex;
+    position: relative;
+  }
+
+  .mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: end;
+    position: absolute;
+
+    top: 25px;
+    right: -14px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 99vw;
+    z-index: 10;
+    background-color: white;
+  }
+
+  .mobile-menu li {
+    cursor: pointer;
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
+
+  .mobile-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-menu ul {
+    border: 1px solid black;
+  }
+
+  .mobile-menu li:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
+}
