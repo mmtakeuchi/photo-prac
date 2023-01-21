@@ -1,0 +1,31 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: 40%;
+  overflow: hidden;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input[type='search'] {
+  flex: 1;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: none;
+}
+
+input[type='search']:focus {
+  outline: none;
+}
