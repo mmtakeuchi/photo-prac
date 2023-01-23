@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { fetchPhotosByKeyword } from './utils/index';
 import Header from './components/Header';
 import Search from './components/Search';
+import HomePage from './components/HomePage';
 import QueryImages from './components/QueryImages';
 import ImageList from './components/ImageList';
 import './App.css';
@@ -23,8 +25,14 @@ function App() {
       <Header />
       <main>
         <Search setQueryKeyword={setQueryKeyword} />
-        <ImageList images={images} />
-        <QueryImages images={images} />
+
+        <Routes>
+          <Route path="/" element={<ImageList images={images} />} />
+          <Route
+            path="/images/:query"
+            element={<QueryImages images={images} />}
+          />
+        </Routes>
       </main>
     </div>
   );

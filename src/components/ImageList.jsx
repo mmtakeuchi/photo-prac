@@ -7,7 +7,6 @@ const ImageList = ({ images }) => {
   const [randomImages, setRandomImages] = useState(
     images?.length ? images : []
   );
-  console.log(images);
 
   const getImages = () => {
     fetchRandomPhotos().then((photos) => setRandomImages(photos));
