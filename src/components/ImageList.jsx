@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchRandomPhotos } from '../utils/index';
+import Image from './Image';
 import './ImageList.styles.css';
 
 const ImageList = () => {
@@ -17,11 +18,7 @@ const ImageList = () => {
   return (
     <div className="images-container">
       {images.map((image) => (
-        <img
-          key={image.id}
-          src={image.urls.thumb}
-          alt={image.alt_description}
-        />
+        <Image key={image.id} image={image} />
       ))}
     </div>
   );
