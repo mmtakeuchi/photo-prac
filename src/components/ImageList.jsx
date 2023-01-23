@@ -3,12 +3,14 @@ import { fetchRandomPhotos } from '../utils/index';
 import Image from './Image';
 import './ImageList.styles.css';
 
-const ImageList = () => {
-  const [images, setImages] = useState([]);
+const ImageList = ({ images }) => {
+  const [randomImages, setRandomImages] = useState(
+    images?.length ? images : []
+  );
   console.log(images);
 
   const getImages = () => {
-    fetchRandomPhotos().then((photos) => setImages(photos));
+    fetchRandomPhotos().then((photos) => setRandomImages(photos));
   };
 
   useEffect(() => {
@@ -17,9 +19,9 @@ const ImageList = () => {
 
   return (
     <div className="images-container">
-      {images.map((image) => (
-        <Image key={image.id} image={image} />
-      ))}
+      {images?.length
+        ? images?.map((image) => <Image key={image.id} image={image} />)
+        : randomImages?.map((image) => <Image key={image.id} image={image} />)}
     </div>
   );
 };

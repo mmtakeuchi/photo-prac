@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { fetchPhotosByKeyword } from '../utils/index';
 import './Search.styles.css';
 
-const Search = () => {
-  const [query, setQuery] = useState('');
+const Search = ({ setQueryKeyword }) => {
+  const [value, setValue] = useState('');
 
   const handleInput = (e) => {
-    setQuery(e.target.value);
+    setValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchPhotosByKeyword(query);
+    setQueryKeyword(value);
   };
 
   return (
@@ -38,7 +38,7 @@ const Search = () => {
         <input
           type="search"
           onChange={handleInput}
-          value={query}
+          value={value}
           placeholder="Search photos"
         />
       </form>
