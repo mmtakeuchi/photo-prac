@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchPhotosByKeyword } from '../utils/index';
+import { fetchPhotosByKeyword } from '../../utils/index';
 import './Search.styles.css';
 
 const Search = ({ setQueryKeyword }) => {
