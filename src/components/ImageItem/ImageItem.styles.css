@@ -1,6 +1,7 @@
-img {
+.image-item {
   width: 100%;
   height: auto;
   margin: 5px 0;
   cursor: pointer;
+  position: relative;
 }

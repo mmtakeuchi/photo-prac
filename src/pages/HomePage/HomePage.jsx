@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetRandomImagesQuery } from '../../store/imageSlice';
+import { useGetRandomImagesQuery } from '../../store/imageApi';
 import ImageList from '../../components/ImageList/ImageList';
 import './HomePage.styles.css';
 
