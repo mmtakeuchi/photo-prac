@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Image from './Image';
+import Image from '../ImageItem/ImageItem';
 import './ImageList.styles.css';
 
 const ImageList = ({ images }) => {

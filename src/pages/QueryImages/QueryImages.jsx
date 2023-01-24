@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchPhotosByKeyword } from '../utils/index';
-import ImageList from './ImageList';
+import { fetchPhotosByKeyword } from '../../utils/index';
+import ImageList from '../../components/ImageList/ImageList';
 import './QueryImages.styles.css';
 
 const QueryImages = ({ images }) => {
