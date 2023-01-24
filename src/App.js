@@ -9,35 +9,15 @@ import ImageList from './components/ImageList/ImageList';
 import './App.css';
 
 function App() {
-  const [queryImages, setQueryImages] = useState([]);
-  const [randomImages, setRandomImages] = useState([]);
-  const [queryKeyword, setQueryKeyword] = useState('');
-
-  const getImages = () => {
-    fetchRandomPhotos().then((photos) => setRandomImages(photos));
-  };
-
-  const getSearchImages = () => {
-    fetchPhotosByKeyword(queryKeyword).then((photos) =>
-      setQueryImages(photos.results)
-    );
-  };
-
-  useEffect(() => getImages(), []);
-  useEffect(() => getSearchImages(), [queryKeyword]);
-
   return (
     <div className="app">
       <Header />
       <main>
-        <Search setQueryKeyword={setQueryKeyword} />
+        <Search />
 
         <Routes>
-          <Route path="/" element={<ImageList images={randomImages} />} />
-          <Route
-            path="/images/:query"
-            element={<QueryImages images={queryImages} />}
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/images/:query" element={<QueryImages />} />
         </Routes>
       </main>
     </div>

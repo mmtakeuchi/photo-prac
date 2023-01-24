@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchPhotosByKeyword } from '../../utils/index';
 import './Search.styles.css';
 
-const Search = ({ setQueryKeyword }) => {
+const Search = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState('');
 
@@ -13,7 +12,7 @@ const Search = ({ setQueryKeyword }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQueryKeyword(value);
+
     navigate(`/images/${value}`);
   };
 

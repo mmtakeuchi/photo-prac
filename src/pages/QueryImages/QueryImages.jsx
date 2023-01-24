@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchPhotosByKeyword } from '../../utils/index';
+import { useGetImagesByKeywordQuery } from '../../store/imageSlice';
 import ImageList from '../../components/ImageList/ImageList';
 import './QueryImages.styles.css';
 
-const QueryImages = ({ images }) => {
-  const [queryImages, setQueryImages] = useState(images ? images : []);
+const QueryImages = () => {
   const { query } = useParams();
+  const { data, error, isLoading } = useGetImagesByKeywordQuery(query);
 
-  const getSearchImages = () => {
-    fetchPhotosByKeyword(query).then((photos) =>
-      setQueryImages(photos.results)
-    );
-  };
+  if (error) return <div>An error has occurred!</div>;
 
-  useEffect(() => getSearchImages(), [query]);
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
-      <ImageList images={queryImages} />
+      <h2>{query.charAt(0).toUpperCase() + query.slice(1)}</h2>
+      <ImageList images={data.results} />
     </>
   );
 };
