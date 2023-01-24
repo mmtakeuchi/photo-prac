@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { fetchPhotosByKeyword } from './utils/index';
+import { fetchRandomPhotos, fetchPhotosByKeyword } from './utils/index';
 import Header from './components/Header';
 import Search from './components/Search';
 import HomePage from './components/HomePage';
@@ -9,15 +9,21 @@ import ImageList from './components/ImageList';
 import './App.css';
 
 function App() {
-  const [images, setImages] = useState([]);
+  const [queryImages, setQueryImages] = useState([]);
+  const [randomImages, setRandomImages] = useState([]);
   const [queryKeyword, setQueryKeyword] = useState('');
 
-  const getSearchImages = () => {
-    if (queryKeyword) {
-      fetchPhotosByKeyword(queryKeyword).then((photos) => setImages(photos));
-    }
+  const getImages = () => {
+    fetchRandomPhotos().then((photos) => setRandomImages(photos));
   };
 
+  const getSearchImages = () => {
+    fetchPhotosByKeyword(queryKeyword).then((photos) =>
+      setQueryImages(photos.results)
+    );
+  };
+
+  useEffect(() => getImages(), []);
   useEffect(() => getSearchImages(), [queryKeyword]);
 
   return (
@@ -27,10 +33,10 @@ function App() {
         <Search setQueryKeyword={setQueryKeyword} />
 
         <Routes>
-          <Route path="/" element={<ImageList images={images} />} />
+          <Route path="/" element={<ImageList images={randomImages} />} />
           <Route
             path="/images/:query"
-            element={<QueryImages images={images} />}
+            element={<QueryImages images={queryImages} />}
           />
         </Routes>
       </main>
