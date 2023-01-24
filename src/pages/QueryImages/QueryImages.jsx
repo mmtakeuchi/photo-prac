@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetImagesByKeywordQuery } from '../../store/imageSlice';
+import { useGetImagesByKeywordQuery } from '../../store/imageApi';
 import ImageList from '../../components/ImageList/ImageList';
 import './QueryImages.styles.css';
 
