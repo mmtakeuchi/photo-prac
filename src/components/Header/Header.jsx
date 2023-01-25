@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.styles.css';
 
 const Header = () => {
@@ -6,15 +7,38 @@ const Header = () => {
 
   const Menu = () => (
     <ul className="nav-links">
-      <li>About</li>
-      <li>Photos</li>
-      <li>Sign In</li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? 'active-link' : 'link')}
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? 'active-link' : 'link')}
+        >
+          Photos
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? 'active-link' : 'link')}
+        >
+          Sign In
+        </NavLink>
+      </li>
     </ul>
   );
 
   return (
     <header>
-      <h4>Photo Prac</h4>
+      <Link to="/" className="link">
+        <h4>Photo Prac</h4>
+      </Link>
       <nav className="navbar-container">
         <Menu />
       </nav>
