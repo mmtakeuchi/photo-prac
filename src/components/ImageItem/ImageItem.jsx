@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { open } from '../../store/modalSlice';
+import { modal } from '../../store/index';
 import Modal from '../Modal/Modal';
 import './ImageItem.styles.css';
 
 const Image = ({ image }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { isOpen } = useSelector((state) => state.modal);
 
   return (
     <>
@@ -11,9 +15,9 @@ const Image = ({ image }) => {
         className="image-item"
         src={image.urls.thumb}
         alt={image.alt_description}
-        onClick={() => setIsOpen(true)}
+        onClick={() => dispatch(open(image))}
       />
-      {isOpen && <Modal image={image} isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {isOpen && <Modal image={image} />}
     </>
   );
 };
