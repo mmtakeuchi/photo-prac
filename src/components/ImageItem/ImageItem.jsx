@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { open } from '../../store/modalSlice';
-import { modal } from '../../store/index';
 import Modal from '../Modal/Modal';
 import './ImageItem.styles.css';
 

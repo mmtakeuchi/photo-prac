@@ -1,12 +1,11 @@
 .modal-container {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 10;
-  overflow: hidden;
 }
 
 .modal-content {
@@ -16,7 +15,6 @@
   position: fixed;
   border-radius: 5px;
   margin: 0 auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   z-index: 20;
   padding: 1rem;
   top: 50%;
