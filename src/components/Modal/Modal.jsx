@@ -1,25 +1,28 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { close } from '../../store/modalSlice';
 import './Modal.styles.css';
 
-const Modal = ({ image, setIsOpen, isOpen }) => {
-  console.log(image);
+const Modal = () => {
+  const dispatch = useDispatch();
+  const { isOpen, image } = useSelector((state) => state.modal);
 
   useEffect(() => {
     const closeOnEscapeKeyDown = (e) => {
       if (e.code === 'Escape') {
-        setIsOpen(false);
+        dispatch(close());
       }
     };
 
     window.addEventListener('keydown', closeOnEscapeKeyDown);
 
     return () => window.removeEventListener('keydown', closeOnEscapeKeyDown);
-  }, [setIsOpen]);
+  }, [dispatch, isOpen]);
 
   return (
-    <div className="modal-container" onClick={() => setIsOpen(false)}>
+    <div className="modal-container" onClick={() => dispatch(close())}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-button" onClick={() => setIsOpen(false)}>
+        <button className="modal-button" onClick={() => dispatch(close())}>
           X
         </button>
         <div className="modal-header">

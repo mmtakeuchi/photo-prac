@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { modal } from './store/index';
 import { fetchRandomPhotos, fetchPhotosByKeyword } from './utils/index';
 import Header from './components/Header/Header';
 import Search from './components/Search/Search';
@@ -9,6 +11,16 @@ import ImageList from './components/ImageList/ImageList';
 import './App.css';
 
 function App() {
+  const { isOpen } = useSelector((state) => state.modal);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }, [isOpen]);
+
   return (
     <div className="app">
       <Header />
